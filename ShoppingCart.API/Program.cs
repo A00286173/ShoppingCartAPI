@@ -1,4 +1,18 @@
+using ShoppingCart.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add EF Core contexts:
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("ShoppingCartDb"));  // using an in-memory database
+
+builder.Services.AddDbContext<AppSecurityDbContext>(options =>
+    options.UseInMemoryDatabase("ShoppingCartAuthDb"));  // in-memory database for Identity
+
+
 
 // Add services to the container.
 
