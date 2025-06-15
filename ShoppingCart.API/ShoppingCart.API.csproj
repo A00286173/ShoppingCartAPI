@@ -18,8 +18,4 @@
     <ProjectReference Include="..\ShoppingCart.Models\ShoppingCart.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

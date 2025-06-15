@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Models
 {
-    public class ShoppingCart
+    public class ShoppingCarts
     {
         public int Id { get; set; } // Primary Key
         public string? User { get; set; }
