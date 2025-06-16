@@ -34,7 +34,6 @@ namespace ShoppingCart.API.Controllers
             // Find the shopping cart for this user (by user's email)
             var cart = await _db.ShoppingCarts
                                  .Include(c => c.Products)
-                                 .ThenInclude(p => p.Category)    // include category info for each product
                                  .FirstOrDefaultAsync(c => c.User == user.Email);
 
             if (cart == null)

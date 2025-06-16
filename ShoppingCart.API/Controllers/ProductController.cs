@@ -21,7 +21,6 @@ namespace ShoppingCart.API.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
             var products = await _db.Products
-                                    .Include(p => p.Category)
                                     .ToListAsync();
 
             if (products == null || products.Count == 0)
@@ -37,7 +36,6 @@ namespace ShoppingCart.API.Controllers
         public async Task<ActionResult<Product>> GetProductById(int id)
         {
             var product = await _db.Products
-                                   .Include(p => p.Category)
                                    .FirstOrDefaultAsync(p => p.Id == id);
             if (product == null)
                 return NotFound("Product not found.");
@@ -76,9 +74,9 @@ namespace ShoppingCart.API.Controllers
                 return BadRequest(ModelState);
 
             //category existance exits
-            var cat = await _db.Categories.FindAsync(product.CategoryId);
-            if (cat == null) 
-                return BadRequest("Invalid category.");
+            //var cat = await _db.Categories.FindAsync(product.CategoryId);
+            //if (cat == null) 
+            //    return BadRequest("Invalid category.");
 
 
             _db.Products.Add(product);
